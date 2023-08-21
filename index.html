@@ -1,0 +1,90 @@
+<html>
+    <head>
+        <title>first page</title>
+    </head>
+    <body>
+        <h1>this is heading 1</h1>
+        <h2>this is heading 2</h2>
+        <h3>this is heading 3</h3>
+        <h4>this is heading 4</h4>
+        <h5>this is heading 5</h5>
+        <h6>this is heading 6</h6>
+        <p>my first<!page..></p>
+            <body bgcolor="#D44F32">
+                <a href="http://www.kongu.ac.in" target="_blank">kongu</a>
+                <a href="next.html"target="_self">next</a>
+                <h1> <a href="#last">Bottom</a></h1>
+                <h1 id="first">Topic 1</h1>
+                 <p>Beamforming Applications
+Beamforming is also widely used in radar, sonar, medical imaging, and audio applications. Beamformers can be used to focus transmitted signals from a sensor array in a specific direction. For received signals at a sensor array, beamformers enhance detection by coherently summing signals across elements of arrays. Conventional beamformers have fixed weights while adaptive beamformers have weights that respond to the environment. For narrowband signals, beamforming can often be achieved by multiplying the sensor input with a complex exponential with the appropriate phase shift. You can use MATLAB® to model narrowband beamforming with the Conventional and Adaptive Beamformers example. In the case of wideband signals, the steering is no longer a function of a single frequency and the operation may need to be carried out in multiple frequency bands. You can model wideband beamforming in MATLAB with the Visualization of Wideband Beamformer Performance example.</p>
+
+<p>Beamforming Performance
+Developing a beamformer and evaluating algorithm alternatives is only the first step toward achieving the required performance of a wireless communications or radar system. To assess performance, the beamformer must be integrated into a system-level model and evaluated over a collection of parameter, steering, and channel combinations. Another challenge involves system-level tradeoffs between performing beamforming in the radio frequency (RF) and/or digital baseband domain. All these activities are best done early in the design process. You can use MATLAB and Simulink® to assess the impact of RF effects on beamformer performance with the Massive MIMO Hybrid Beamforming with RF Impairments example.
+
+Beamforming with MATLAB and Simulink
+MATLAB and Simulink provide a full set of modeling and simulation tools and algorithms needed to design, test, and integrate beamformers, and to perform full system-level analysis. Once you design the beamformer, you can deploy it to C code or HDL in your end system using MATLAB Coder™, Simulink Coder™, and HDL Coder™.
+
+To learn more about beamforming, see Phased Array System Toolbox™ and Communications Toolbox™.
+Beamforming is a technique used to improve the signal-to-noise ratio of received signals, eliminate undesirable interference sources, and focus transmitted signals to specific locations. Beamforming is central to systems with sensor arrays, including MIMO wireless communications systems such as 5G, LTE, and WLAN. MIMO beamforming in wireless applications can also be used to increase data stream capacity between a base station and user elements. Optimization-based beamforming techniques are becoming more popular in modern wireless communication systems. These techniques include hybrid beamforming, where optimization is used to efficiently partition system architectures between baseband and RF systems to reduce the cost.</p>
+
+<p>To change the directionality of the array when transmitting, a beamformer controls the phase and relative amplitude of the signal at each transmitter, in order to create a pattern of constructive and destructive interference in the wavefront. When receiving, information from different sensors is combined in a way where the expected pattern of radiation is preferentially observed.
+
+For example, in sonar, to send a sharp pulse of underwater sound towards a ship in the distance, simply simultaneously transmitting that sharp pulse from every sonar projector in an array fails because the ship will first hear the pulse from the speaker that happens to be nearest the ship, then later pulses from speakers that happen to be further from the ship. The beamforming technique involves sending the pulse from each projector at slightly different times (the projector closest to the ship last), so that every pulse hits the ship at exactly the same time, producing the effect of a single strong pulse from a single powerful projector. The same technique can be carried out in air using loudspeakers, or in radar/radio using antennas.</p>
+
+<p>In passive sonar, and in reception in active sonar, the beamforming technique involves combining delayed signals from each hydrophone at slightly different times (the hydrophone closest to the target will be combined after the longest delay), so that every signal reaches the output at exactly the same time, making one loud signal, as if the signal came from a single, very sensitive hydrophone. Receive beamforming can also be used with microphones or radar antennas.
+
+With narrowband systems the time delay is equivalent to a "phase shift", so in this case the array of antennas, each one shifted a slightly different amount, is called a phased array. A narrow band system, typical of radars, is one where the bandwidth is only a small fraction of the center frequency. With wideband systems this approximation no longer holds, which is typical in sonars.
+
+In the receive beamformer the signal from each antenna may be amplified by a different "weight." Different weighting patterns (e.g., Dolph–Chebyshev) can be used to achieve the desired sensitivity patterns. A main lobe is produced together with nulls and sidelobes. As well as controlling the main lobe width (beamwidth) and the sidelobe levels, the position of a null can be controlled. This is useful to ignore noise or jammers in one particular direction, while listening for events in other directions. A similar result can be obtained on transmission.</p>
+
+<p>For the full mathematics on directing beams using amplitude and phase shifts, see the mathematical section in phased array.
+
+Beamforming techniques can be broadly divided into two categories
+
+Conventional beamformers, such as the Butler matrix, use a fixed set of weightings and time-delays (or phasings) to combine the signals from the sensors in the array, primarily using only information about the location of the sensors in space and the wave directions of interest. In contrast, adaptive beamforming techniques (e.g., MUSIC, SAMV) generally combine this information with properties of the signals actually received by the array, typically to improve rejection of unwanted signals from other directions. This process may be carried out in either the time or the frequency domain.
+
+As the name indicates, an adaptive beamformer is able to automatically adapt its response to different situations. Some criterion has to be set up to allow the adaptation to proceed such as minimizing the total noise output. Because of the variation of noise with frequency, in wide band systems it may be desirable to carry out the process in the frequency domain.
+
+Beamforming can be computationally intensive. Sonar phased array has a data rate low enough that it can be processed in real time in software, which is flexible enough to transmit or receive in several directions at once. In contrast, radar phased array has a data rate so high that it usually requires dedicated hardware processing, which is hard-wired to transmit or receive in only one direction at a time. However, newer field programmable gate arrays are fast enough to handle radar data in real time, and can be quickly re-programmed like software, blurring the hardware/software distinction.
+
+Sonar beamforming requirements
+Sonar beamforming utilizes a similar technique to electromagnetic beamforming, but varies considerably in implementation details. Sonar applications vary from 1 Hz to as high as 2 MHz, and array elements may be few and large, or number in the hundreds yet very small. This will shift sonar beamforming design efforts significantly between demands of such system components as the "front end" (transducers, pre-amplifiers and digitizers) and the actual beamformer computational hardware downstream. High frequency, focused beam, multi-element imaging-search sonars and acoustic cameras often implement fifth-order spatial processing that places strains equivalent to Aegis radar demands on the processors.</p>
+
+<p>Many sonar systems, such as on torpedoes, are made up of arrays of up to 100 elements that must accomplish beam steering over a 100 degree field of view and work in both active and passive modes.
+
+Sonar arrays are used both actively and passively in 1-, 2-, and 3-dimensional arrays.
+
+1-dimensional "line" arrays are usually in multi-element passive systems towed behind ships and in single- or multi-element side-scan sonar.
+2-dimensional "planar" arrays are common in active/passive ship hull mounted sonars and some side-scan sonar.
+3-dimensional spherical and cylindrical arrays are used in 'sonar domes' in the modern submarine and ships.
+Sonar differs from radar in that in some applications such as wide-area-search all directions often need to be listened to, and in some applications broadcast to, simultaneously. Thus a multibeam system is needed. In a narrowband sonar receiver, the phases for each beam can be manipulated entirely by signal processing software, as compared to present radar systems that use hardware to 'listen' in a single direction at a time.
+
+Sonar also uses beamforming to compensate for the significant problem of the slower propagation speed of sound as compared to that of electromagnetic radiation. In side-look-sonars, the speed of the towing system or vehicle carrying the sonar is moving at sufficient speed to move the sonar out of the field of the returning sound "ping". In addition to focusing algorithms intended to improve reception, many side scan sonars also employ beam steering to look forward and backward to "catch" incoming pulses that would have been missed by a single sidelooking beam.</p>
+
+<p>Schemes
+A conventional beamformer can be a simple beamformer also known as delay-and-sum beamformer. All the weights of the antenna elements can have equal magnitudes. The beamformer is steered to a specified direction only by selecting appropriate phases for each antenna. If the noise is uncorrelated and there are no directional interferences, the signal-to-noise ratio of a beamformer with 
+�
+L antennas receiving a signal of power 
+�
+P, (where 
+�
+�
+2
+\sigma _{n}^{2} is Noise variance or Noise power), is: 
+1
+�
+�
+2
+�
+⋅
+�
+{\frac  {1}{\sigma _{n}^{2}}}P\cdot L
+A null-steering beamformer is optimized to have zero response in the direction of one or more interferers.
+A frequency-domain beamformer treats each frequency bin as a narrowband signal, for which the filters are complex coefficients (that is, gains and phase shifts), separately optimized for each frequency.
+Evolved Beamformer
+The delay-and-sum beamforming technique uses multiple microphones to localize sound sources. One disadvantage of this technique is that adjustments of the position or of the number of microphones changes the performance of the beamformer nonlinearly. Additionally, due to the number of combinations possible, it is computationally hard to find the best configuration. One of the techniques to solve this problem is the use of genetic algorithms. Such algorithm searches for the microphone array configuration that provides the highest signal-to-noise ratio for each steered orientation. Experiments showed that such algorithm could find the best configuration of a constrained search space comprising ~33 million solutions in a matter of seconds instead of days.[2]</p>
+<h1><a href="#first">Top</a></h1>
+<h1 id="last">Topic 4</h1>
+    </body>
+</html>
+ 
